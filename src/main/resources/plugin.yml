@@ -1,0 +1,197 @@
+name: VexVolMinigames
+version: '${version}'
+main: dev.vexvol.minigames.VexVolMinigamesPlugin
+api-version: '26.2'
+author: VexVol
+website: https://vexvol.example
+
+description: VexVol core mini-games, arenas, sessions, localization and staff scopes.
+
+softdepend:
+  - VoidRpAuth
+  - VoidRpPerms
+  - VoidRpGuard
+  - VoidRpUI
+  - LuckPerms
+  - GrimAC
+  - PacketEvents
+  - CoreProtect
+  - Multiverse-Core
+  - VoidGen
+  - FastAsyncWorldEdit
+  - WorldGuard
+
+commands:
+  vex:
+    description: Main VexVol command
+    usage: /vex <arena|map|world|game|player|admin|moderation|debug|nick|minigame|setup commands>
+    aliases: [vexvol]
+  fly:
+    description: Toggle flight, optionally for another player
+  flyspeed:
+    description: Set flight speed from 0.001 to 10
+  day:
+    description: Set day time
+  night:
+    description: Set night time
+  weather:
+    description: Change weather
+  tp:
+    description: Teleport to a player
+  tphere:
+    description: Teleport a player to yourself
+  gm:
+    description: Change game mode
+  spawn:
+    description: Teleport to the VexVol main lobby
+  kick:
+    description: Kick a player
+  heal:
+    description: Heal a player
+  feed:
+    description: Feed a player
+  vban:
+    description: Ban via the configured VoidRP integration
+  vunban:
+    description: Unban via the configured VoidRP integration
+  mute:
+    description: Mute via the configured VoidRP integration
+  unmute:
+    description: Unmute via the configured VoidRP integration
+
+permissions:
+  vex.use: {description: Access to the main VexVol command, default: op}
+
+  vex.arena.list: {description: List arenas, default: false}
+  vex.arena.info: {description: View arena info, default: false}
+  vex.arena.create: {description: Create arenas, default: false}
+  vex.arena.delete: {description: Delete arenas, default: false}
+  vex.arena.enable: {description: Enable arenas, default: false}
+  vex.arena.disable: {description: Disable arenas, default: false}
+  vex.arena.setspawn: {description: Set team spawn, default: false}
+  vex.arena.setlobby: {description: Set arena lobby, default: false}
+  vex.arena.setregion: {description: Set arena region points, default: false}
+  vex.arena.reset: {description: Reset arena state, default: false}
+  vex.arena.test: {description: Test arena, default: false}
+  vex.arena.edit: {description: Enter arena edit mode, default: false}
+  vex.arena.*: {description: All arena permissions, default: false, children: {vex.arena.list: true, vex.arena.info: true, vex.arena.create: true, vex.arena.delete: true, vex.arena.enable: true, vex.arena.disable: true, vex.arena.setspawn: true, vex.arena.setlobby: true, vex.arena.setregion: true, vex.arena.reset: true, vex.arena.test: true, vex.arena.edit: true}}
+
+  vex.map.list: {description: List maps, default: false}
+  vex.map.info: {description: View map info, default: false}
+  vex.map.create: {description: Create map template, default: false}
+  vex.map.delete: {description: Delete map template, default: false}
+  vex.map.edit: {description: Edit map template metadata, default: false}
+  vex.map.import: {description: Import map template, default: false}
+  vex.map.export: {description: Export map template, default: false}
+  vex.map.test: {description: Test a map, default: false}
+  vex.map.build: {description: Allow map building, default: false}
+  vex.map.*: {description: All map permissions, default: false}
+
+  vex.world.list: {description: List worlds, default: false}
+  vex.world.create: {description: Create world, default: false}
+  vex.world.load: {description: Load world, default: false}
+  vex.world.unload: {description: Unload world, default: false}
+  vex.world.delete: {description: Delete world, default: false}
+  vex.world.teleport: {description: Teleport to world, default: false}
+  vex.world.info: {description: View world info, default: false}
+  vex.world.*: {description: All world permissions, default: false}
+
+  vex.game.list: {description: List active games, default: false}
+  vex.game.info: {description: View game info, default: false}
+  vex.game.start: {description: Start a game, default: false}
+  vex.game.stop: {description: Stop a game, default: false}
+  vex.game.restart: {description: Restart a game, default: false}
+  vex.game.join: {description: Force join a game, default: false}
+  vex.game.leave: {description: Force leave a game, default: false}
+  vex.game.forcestart: {description: Force start a game, default: false}
+  vex.game.*: {description: All game permissions, default: false}
+
+  vex.player.info: {description: View player info, default: false}
+  vex.player.teleport: {description: Teleport a player, default: false}
+  vex.player.tphere: {description: Teleport a player here, default: false}
+  vex.player.fly: {description: Toggle player flight, default: false}
+  vex.fly: {description: Toggle own flight, default: false}
+
+  vex.fly.speed: {description: Set own flight speed, default: false}
+  vex.fly.others: {description: Set flight state or speed for another player, default: false}
+  vex.heal: {description: Heal a player, default: false}
+  vex.feed: {description: Feed a player, default: false}
+  vex.gamemode: {description: Change game mode, default: false}
+  vex.kick: {description: Kick a player, default: false}
+  vex.player.*: {description: All player permissions, default: false}
+
+  vex.spawn: {description: Teleport to main lobby, default: true}
+  vex.server.day: {description: Set day, default: false}
+  vex.server.night: {description: Set night, default: false}
+  vex.server.weather: {description: Change weather, default: false}
+  vex.server.*: {description: All server environment permissions, default: false}
+
+  vex.kick: {description: Kick a player, default: false}
+  vex.moderation.kick: {description: Kick a player as moderation, default: false}
+  vex.moderation.ban: {description: Ban via VoidRP, default: false}
+  vex.moderation.unban: {description: Unban via VoidRP, default: false}
+  vex.moderation.mute: {description: Mute via VoidRP, default: false}
+  vex.moderation.unmute: {description: Unmute via VoidRP, default: false}
+  vex.moderation.*: {description: All moderation permissions, default: false}
+
+  vex.admin.reload: {description: Reload config, default: false}
+  vex.admin.status: {description: VexVol status, default: false}
+  vex.admin.reloadlocale: {description: Reload locales, default: false}
+  vex.admin.maintenance: {description: Toggle maintenance mode, default: false}
+  vex.admin.permissions: {description: Inspect permissions, default: false}
+  vex.admin.scopes: {description: Manage VexVol scopes, default: false}
+  vex.admin.*: {description: All admin permissions, default: false}
+
+  vex.debug.info: {description: General debug info, default: false}
+  vex.debug.players: {description: Player debug info, default: false}
+  vex.debug.arenas: {description: Arena debug info, default: false}
+  vex.debug.sessions: {description: Session debug info, default: false}
+  vex.debug.worlds: {description: World debug info, default: false}
+  vex.debug.permissions: {description: Permission debug info, default: false}
+  vex.debug.*: {description: All debug permissions, default: false}
+
+  vex.nickname.self.set: {description: Change own custom nickname, default: false}
+  vex.nickname.self.reset: {description: Reset own custom nickname, default: false}
+  vex.nickname.others.set: {description: Change another player's nickname, default: false}
+  vex.nickname.others.reset: {description: Reset another player's nickname, default: false}
+  vex.nickname.info: {description: View nickname info, default: false}
+  vex.nickname.*: {description: All nickname permissions, default: false}
+
+  vex.minigame.edit: {description: Edit configured mini-games, default: false}
+  vex.minigame.manage: {description: Create/list/enable/disable mini-games, default: false}
+  vex.minigame.delete: {description: Delete mini-game definitions, default: false}
+  vex.minigame.start: {description: Force start a mini-game, default: false}
+  vex.minigame.stop: {description: Stop a mini-game, default: false}
+  vex.minigame.bedwars.edit: {description: Edit BedWars, default: false}
+  vex.minigame.bedwars.test: {description: Test BedWars, default: false}
+  vex.minigame.bedwars.delete: {description: Delete BedWars data, default: false}
+  vex.minigame.bedwars.manage: {description: Manage BedWars, default: false}
+  vex.minigame.bedwars.*: {description: All BedWars permissions, default: false}
+  vex.minigame.duels.*: {description: All Duels permissions, default: false}
+  vex.minigame.skywars.*: {description: All SkyWars permissions, default: false}
+  vex.minigame.*: {description: All mini-game permissions, default: false}
+
+  vex.*:
+    description: Full VexVol access
+    default: false
+    children:
+      vex.use: true
+      vex.arena.*: true
+      vex.map.*: true
+      vex.world.*: true
+      vex.game.*: true
+      vex.player.*: true
+      vex.kick: true
+      vex.heal: true
+      vex.feed: true
+      vex.fly: true
+      vex.gamemode: true
+      vex.spawn: true
+      vex.server.*: true
+      vex.moderation.*: true
+      vex.admin.*: true
+      vex.debug.*: true
+      vex.nickname.*: true
+      vex.minigame.*: true
+      vex.fly.speed: true
+      vex.fly.others: true

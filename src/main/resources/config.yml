@@ -1,0 +1,39 @@
+version: 1
+
+main-lobby:
+  world: world
+  x: 0.5
+  y: 100.0
+  z: 0.5
+  yaw: 0.0
+  pitch: 0.0
+
+worlds:
+  generator: VoidGen
+  environment: NORMAL
+  type: NORMAL
+  structures: false
+
+nickname:
+  min-length: 3
+  max-length: 16
+  unique: true
+  allowed-pattern: "^[A-Za-z0-9_]{3,16}$"
+  banned-words: []
+
+staff:
+  owner-permission: vex.staff.owner
+  admin-permission: vex.staff.admin
+  moderator-permission: vex.staff.moderator
+  builder-permission: vex.staff.builder
+
+scopes:
+  cleanup-expired-minutes: 1
+
+matchmaking:
+  auto-join-enabled: false
+
+
+# Mini-game defaults are stored per arena in plugins/VexVolMinigames/minigames.yml
+# BedrockBox: emerald is the only shop currency.
+# OneBlock defaults: 1 item every 1 second, 1 item, barrier delay 20 minutes, shrink 10 minutes.
