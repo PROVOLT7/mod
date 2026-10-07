@@ -14,6 +14,7 @@ import dev.vexvol.minigames.util.CommandUtil;
 import dev.vexvol.minigames.util.DurationParser;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
